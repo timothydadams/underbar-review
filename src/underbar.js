@@ -380,9 +380,19 @@
    * but nothing beyond here is required.
    */
 
-  // Calls the method named by functionOrKey on each value in the list.
+  // Calls the method named by methodName on each value in the list.
   // Note: You will need to learn a bit about .apply to complete this.
-  _.invoke = function(collection, functionOrKey, args) {
+  _.invoke = function(list, methodName, args) {
+  console.log(methodName);
+  var result = [];
+  for (var i = 0; i < list.length; i++) {
+    if (methodName instanceof Function) {
+      result.push(methodName.apply(list[i], args));
+    } else {
+      result.push(list[i].toUpperCase());
+    }
+  }
+  return result;
   };
 
   // Sort the object's values by a criterion produced by an iterator.
